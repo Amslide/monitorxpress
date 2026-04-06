@@ -54,9 +54,9 @@
   --bg-active: rgba(0,0,0,0.07);
   --glass-border: rgba(0,0,0,0.1);
   --glass-border-hover: rgba(0,0,0,0.18);
-  --text-primary: #1a1a2e;
-  --text-secondary: rgba(40,50,70,0.65);
-  --text-muted: rgba(80,90,110,0.5);
+  --text-primary: #0a0f1a;
+  --text-secondary: #374151;
+  --text-muted: #4b5563;
   --shadow-card: 0 4px 20px rgba(0,0,0,0.08);
   --bar-bg: rgba(0,0,0,0.07);
   --scrollbar-thumb: rgba(0,0,0,0.14);
@@ -72,7 +72,7 @@
   --chart-temp-line: #cc2940; --chart-temp-fill: rgba(204,41,64,0.06);
   --chart-dl-line: #008aa3;  --chart-dl-fill: rgba(0,138,163,0.1);
   --chart-ul-line: #c04d1a;  --chart-ul-fill: rgba(192,77,26,0.08);
-  --chart-grid: rgba(0,0,0,0.08); --chart-text: rgba(40,50,70,0.55);
+  --chart-grid: rgba(0,0,0,0.1); --chart-text: #6b7280;
   --titlebar-bg: rgba(238,241,246,0.96);
   --body-bg-img: radial-gradient(ellipse at 15% 50%, rgba(0,140,255,0.05) 0%, transparent 50%),
     radial-gradient(ellipse at 85% 20%, rgba(140,60,255,0.04) 0%, transparent 50%),
@@ -116,10 +116,7 @@ body {
 }
 
 .titlebar-title {
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  pointer-events: none;
+  display: none;
 }
 
 .titlebar-controls {

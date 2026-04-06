@@ -61,8 +61,8 @@ function chartColors() {
     tempLine:"#cc2940", tempFill:"rgba(204,41,64,0.08)",
     dlLine:"#008aa3",  dlFill:"rgba(0,138,163,0.12)",
     ulLine:"#c04d1a",  ulFill:"rgba(192,77,26,0.1)",
-    grid:"rgba(0,0,0,0.08)", text:"rgba(40,50,70,0.6)",
-    legendText:"rgba(40,50,70,0.6)",
+    grid:"rgba(0,0,0,0.1)", text:"#6b7280",
+    legendText:"#6b7280",
   };
 }
 
