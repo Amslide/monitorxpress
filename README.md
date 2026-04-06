@@ -1,3 +1,4 @@
+
 # Monitor Xpress
 
 Aplicación de escritorio para monitorización de hardware en tiempo real. Visualiza el rendimiento de tu PC con una interfaz moderna, ligera y sin telemetría.
@@ -20,6 +21,13 @@ Desarrollado por [Atomicode®](https://www.atomicode.net)
 - Vistas de detalle dedicadas para cada componente
 - Gráficas en tiempo real
 - Barra de título personalizada
+
+![enter image description here](https://atomicode.net/monitorxpress/wp-content/uploads/2026/04/monitor-xpress-dashboard.png)
+
+![enter image description here](https://atomicode.net/monitorxpress/wp-content/uploads/2026/04/monitor-express-modo-oscuro.png)
+
+## Video de demostración
+[Demo Monitor Xpress](https://atomicode.net/monitorxpress/wp-content/uploads/2026/04/Video-Monitor-Xpress.mp4)
 
 ## Stack tecnológico
 | Tecnología | Uso |
