@@ -45,8 +45,9 @@ Desarrollado por [Atomicode®](https://www.atomicode.net)
 - Ejecutar como **administrador** (necesario para leer sensores de hardware)
 - GPU NVIDIA (opcional, para monitorización de GPU)
 
-## Instalación
-Descarga el instalador desde la [última release](https://github.com/Amslide/monitorxpress/releases/latest) y ejecútalo como administrador.
+## Descargas e instalación
+Descarga el instalador desde la [última release: ](https://github.com/Amslide/monitorxpress/releases/latest) y ejecútalo como administrador.
+Una vez instalado ejecuta como administrador el programa para poder detectar todo correctamente
 
 ## Compilar desde el código fuente
 ```bash
@@ -68,7 +69,8 @@ Este proyecto se distribuye bajo la Mozilla Public License 2.0 (MPL-2.0).
 #Software libre y sin fines de lucro.
 
 ## Reconocimientos
-Monitor Xpress utiliza LibreHardwareMonitor (MPL-2.0) para la lectura de sensores de hardware. Agradecemos a su equipo por hacer posible el acceso a datos de hardware de forma libre y abierta.
+Monitor Xpress utiliza [LibreHardwareMonitor](https://github.com/LibreHardwareMonitor/LibreHardwareMonitor) (MPL-2.0) para la lectura de sensores de hardware. 
+Agradecemos a su equipo por hacer posible el acceso a datos de hardware de forma libre y abierta.
 
 ## Contacto
 Atomicode®
