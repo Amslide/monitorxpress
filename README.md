@@ -1,9 +1,18 @@
 
 # Monitor Xpress
 
-Aplicación de escritorio para monitorización de hardware en tiempo real. Visualiza el rendimiento de tu PC con una interfaz moderna, ligera y sin telemetría.
+Aplicación de escritorio para monitorización de hardware en tiempo real basada en [LibreHardwareMonitor](https://github.com/LibreHardwareMonitor/LibreHardwareMonitor), [sysinfo](https://crates.io/crates/sysinfo) y [nvml-wrapper](https://crates.io/crates/nvml-wrapper). Visualiza el rendimiento de tu PC con una interfaz moderna, ligera y sin telemetría.
 
-Desarrollado por [Atomicode®](https://www.atomicode.net)
+Un proyecto de [Atomicode®](https://www.atomicode.net)
+
+## Descargas e instalación
+Descarga el instalador desde la [última release ](https://github.com/Amslide/monitorxpress/releases/latest) y ejecútalo como administrador.
+Una vez instalado ejecuta como administrador el programa para poder detectar todo correctamente
+
+## Requisitos
+- Windows 10/11 (64-bit)
+- Ejecutar como **administrador** (necesario para leer sensores de hardware)
+- GPU NVIDIA (opcional, para monitorización de GPU)
 
 ## Características
 - **CPU** — Uso global, temperatura, frecuencia, uso por núcleo
@@ -40,15 +49,6 @@ Desarrollado por [Atomicode®](https://www.atomicode.net)
 | [sysinfo](https://crates.io/crates/sysinfo) | Información de CPU, RAM, discos y red |
 | [nvml-wrapper](https://crates.io/crates/nvml-wrapper) | Monitorización GPU NVIDIA |
 
-## Requisitos
-- Windows 10/11 (64-bit)
-- Ejecutar como **administrador** (necesario para leer sensores de hardware)
-- GPU NVIDIA (opcional, para monitorización de GPU)
-
-## Descargas e instalación
-Descarga el instalador desde la [última release: ](https://github.com/Amslide/monitorxpress/releases/latest) y ejecútalo como administrador.
-Una vez instalado ejecuta como administrador el programa para poder detectar todo correctamente
-
 ## Compilar desde el código fuente
 ```bash
 # Requisitos: Node.js, Rust, cargo
@@ -66,7 +66,7 @@ Monitor Xpress no recopila, transmite ni almacena datos personales. Toda la info
 ## Licencia
 Este proyecto se distribuye bajo la Mozilla Public License 2.0 (MPL-2.0).
 
-#Software libre y sin fines de lucro.
+Software libre y sin fines de lucro.
 
 ## Reconocimientos
 Monitor Xpress utiliza [LibreHardwareMonitor](https://github.com/LibreHardwareMonitor/LibreHardwareMonitor) (MPL-2.0) para la lectura de sensores de hardware. 
