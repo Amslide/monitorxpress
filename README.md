@@ -1,7 +1,7 @@
 
 # Monitor Xpress
 
-> **Estado:** en desarrollo activo · versión actual v0.3.0
+> **Estado:** en desarrollo activo · versión actual v0.2.1
 
 ![Version](https://img.shields.io/github/v/release/Amslide/monitorxpress)
 ![License](https://img.shields.io/badge/license-MPL--2.0-blue)
