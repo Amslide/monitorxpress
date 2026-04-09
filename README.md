@@ -1,13 +1,22 @@
 
 # Monitor Xpress
 
+> **Estado:** en desarrollo activo · versión actual v0.3.0
+
+![Version](https://img.shields.io/github/v/release/Amslide/monitorxpress)
+![License](https://img.shields.io/badge/license-MPL--2.0-blue)
+![Windows](https://img.shields.io/badge/Windows-10%2F11-0078D6?logo=windows)
+
+Aplicación de escritorio...
+
+
 Aplicación de escritorio para monitorización de hardware en tiempo real basada en [LibreHardwareMonitor](https://github.com/LibreHardwareMonitor/LibreHardwareMonitor), [sysinfo](https://crates.io/crates/sysinfo) y [nvml-wrapper](https://crates.io/crates/nvml-wrapper). Visualiza el rendimiento de tu PC con una interfaz moderna, ligera y sin telemetría.
 
 Un proyecto de [Atomicode®](https://www.atomicode.net)
 
 ## Descargas e instalación
-Descarga el instalador desde la [última release ](https://github.com/Amslide/monitorxpress/releases/latest) y ejecútalo como administrador.
-Una vez instalado ejecuta como administrador el programa para poder detectar todo correctamente
+Descarga el instalador desde la [última release ](https://github.com/Amslide/monitorxpress/releases/latest)
+Una vez instalado ejecuta como administrador, es necesario porque LibreHardwareMonitor accede a sensores de hardware a bajo nivel (MSRs, SMBus, ACPI) que el sistema solo expone a procesos elevados.
 
 ## Requisitos
 - Windows 10/11 (64-bit)
@@ -31,9 +40,9 @@ Una vez instalado ejecuta como administrador el programa para poder detectar tod
 - Gráficas en tiempo real
 - Barra de título personalizada
 
-![enter image description here](https://atomicode.net/monitorxpress/wp-content/uploads/2026/04/monitor-xpress-dashboard.png)
+![dashboard monitor express oscuro](https://atomicode.net/monitorxpress/wp-content/uploads/2026/04/monitor-xpress-dashboard.png)
 
-![enter image description here](https://atomicode.net/monitorxpress/wp-content/uploads/2026/04/monitor-express-modo-oscuro.png)
+![dashboard monitor express claro](https://atomicode.net/monitorxpress/wp-content/uploads/2026/04/monitor-express-modo-oscuro.png)
 
 ## Video de demostración
 [Demo Monitor Xpress](https://atomicode.net/monitorxpress/wp-content/uploads/2026/04/Video-Monitor-Xpress.mp4)
@@ -56,9 +65,8 @@ git clone https://github.com/Amslide/monitorxpress.git
 cd monitorxpress
 npm install
 npx tauri build
-
-El ejecutable se genera en src-tauri/target/release/monitor-xpress.exe.
 ```
+El ejecutable se genera en `src-tauri/target/release/monitor-xpress.exe`.
 
 ## Privacidad
 Monitor Xpress no recopila, transmite ni almacena datos personales. Toda la información se procesa localmente. Sin cookies, sin telemetría, sin conexiones externas.
@@ -71,6 +79,9 @@ Software libre y sin fines de lucro.
 ## Reconocimientos
 Monitor Xpress utiliza [LibreHardwareMonitor](https://github.com/LibreHardwareMonitor/LibreHardwareMonitor) (MPL-2.0) para la lectura de sensores de hardware. 
 Agradecemos a su equipo por hacer posible el acceso a datos de hardware de forma libre y abierta.
+
+## Contribuir
+Los issues y pull requests son bienvenidos. Si encuentras un bug, abre un [issue](https://github.com/Amslide/monitorxpress/issues) con tu hardware y una descripción del problema.
 
 ## Contacto
 Atomicode®
