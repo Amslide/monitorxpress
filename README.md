@@ -7,9 +7,6 @@
 ![License](https://img.shields.io/badge/license-MPL--2.0-blue)
 ![Windows](https://img.shields.io/badge/Windows-10%2F11-0078D6?logo=windows)
 
-Aplicación de escritorio...
-
-
 Aplicación de escritorio para monitorización de hardware en tiempo real basada en [LibreHardwareMonitor](https://github.com/LibreHardwareMonitor/LibreHardwareMonitor), [sysinfo](https://crates.io/crates/sysinfo) y [nvml-wrapper](https://crates.io/crates/nvml-wrapper). Visualiza el rendimiento de tu PC con una interfaz moderna, ligera y sin telemetría.
 
 Un proyecto de [Atomicode®](https://www.atomicode.net)
