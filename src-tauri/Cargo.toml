@@ -1,6 +1,6 @@
 [package]
 name = "monitor-xpress"
-version = "0.2.1"
+version = "0.3.0"
 description = "Monitor Xpress - System Hardware Monitor"
 authors = ["Atomicode"]
 edition = "2021"

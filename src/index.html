@@ -10,6 +10,7 @@
   <title>Monitor Xpress</title>
   <link rel="stylesheet" href="styles.css" />
   <script src="/lib/chart.umd.js"></script>
+  <script src="/i18n.js"></script>
 </head>
 <body class="theme-dark mode-expanded">
 
@@ -31,12 +32,12 @@
     <div class="sidebar-header">
       <span class="sidebar-logo" id="sidebar-logo">Monitor Xpress</span>
       <span class="sidebar-logo-mini" id="sidebar-logo-mini">MX</span>
-      <button class="sidebar-toggle" id="sidebar-toggle" title="Ocultar sidebar">&#9776;</button>
+      <button class="sidebar-toggle" id="sidebar-toggle" data-i18n-title="sidebar.toggle">&#9776;</button>
     </div>
 
     <nav class="sidebar-nav">
       <a class="nav-item active" data-view="dashboard">
-        <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></span><span class="nav-text">Dashboard</span>
+        <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></span><span class="nav-text" data-i18n="nav.dashboard">Dashboard</span>
       </a>
       <div class="nav-separator"></div>
       <a class="nav-item" data-view="cpu">
@@ -50,29 +51,39 @@
       </a>
       <div class="nav-separator"></div>
       <a class="nav-item" data-view="disks">
-        <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></span><span class="nav-text">Discos</span>
+        <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></span><span class="nav-text" data-i18n="nav.disks">Discos</span>
       </a>
       <a class="nav-item" data-view="fans">
-        <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12c-2-3-6-4-6-8a6 6 0 0 1 12 0c0 4-4 5-6 8z"/><path d="M12 12c3 2 4 6 8 6a6 6 0 0 0 0-12c-4 0-5 4-8 6z"/><path d="M12 12c2 3 6 4 6 8a6 6 0 0 1-12 0c0-4 4-5 6-8z"/><path d="M12 12c-3-2-4-6-8-6a6 6 0 0 0 0 12c4 0 5-4 8-6z"/><circle cx="12" cy="12" r="2"/></svg></span><span class="nav-text">Ventiladores</span>
+        <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12c-2-3-6-4-6-8a6 6 0 0 1 12 0c0 4-4 5-6 8z"/><path d="M12 12c3 2 4 6 8 6a6 6 0 0 0 0-12c-4 0-5 4-8 6z"/><path d="M12 12c2 3 6 4 6 8a6 6 0 0 1-12 0c0-4 4-5 6-8z"/><path d="M12 12c-3-2-4-6-8-6a6 6 0 0 0 0 12c4 0 5-4 8-6z"/><circle cx="12" cy="12" r="2"/></svg></span><span class="nav-text" data-i18n="nav.fans">Ventiladores</span>
       </a>
       <a class="nav-item" data-view="mobo">
-        <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2"/><rect x="6" y="6" width="4" height="4"/><rect x="14" y="6" width="4" height="4"/><line x1="6" y1="14" x2="6" y2="18"/><line x1="10" y1="14" x2="10" y2="18"/><line x1="14" y1="14" x2="18" y2="14"/><line x1="14" y1="18" x2="18" y2="18"/></svg></span><span class="nav-text">Placa Base</span>
+        <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2"/><rect x="6" y="6" width="4" height="4"/><rect x="14" y="6" width="4" height="4"/><line x1="6" y1="14" x2="6" y2="18"/><line x1="10" y1="14" x2="10" y2="18"/><line x1="14" y1="14" x2="18" y2="14"/><line x1="14" y1="18" x2="18" y2="18"/></svg></span><span class="nav-text" data-i18n="nav.mobo">Placa Base</span>
       </a>
       <div class="nav-separator"></div>
       <a class="nav-item" data-view="net">
-        <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span><span class="nav-text">Red</span>
+        <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span><span class="nav-text" data-i18n="nav.net">Red</span>
       </a>
     </nav>
 
     <div class="sidebar-footer">
       <a class="nav-item" data-view="about">
-        <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></span><span class="nav-text">Acerca de</span>
+        <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></span><span class="nav-text" data-i18n="nav.about">Acerca de</span>
       </a>
+      <div class="lang-nav-wrap">
+        <button class="nav-item lang-nav-item" id="lang-toggle" title="Language / Idioma">
+          <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+          <span class="nav-text"><span id="lang-label">ES</span></span>
+        </button>
+        <div class="lang-menu" id="lang-menu">
+          <button class="lang-option" data-lang="es"><span class="lang-code">ES</span><span class="lang-name">Español</span></button>
+          <button class="lang-option" data-lang="en"><span class="lang-code">EN</span><span class="lang-name">English</span></button>
+        </div>
+      </div>
       <button class="nav-item" id="theme-toggle">
         <span class="nav-icon" id="theme-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span><span class="nav-text" id="theme-label">Claro</span>
       </button>
       <button class="nav-item exit-btn" id="exit-btn">
-        <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></span><span class="nav-text">Salir</span>
+        <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></span><span class="nav-text" data-i18n="nav.exit">Salir</span>
       </button>
     </div>
   </aside>
@@ -83,23 +94,28 @@
     <!-- ==================== DASHBOARD VIEW ==================== -->
     <div class="view active" id="view-dashboard">
       <div class="view-header">
-        <h1 class="view-title">Dashboard</h1>
+        <h1 class="view-title" data-i18n="view.dashboard">Dashboard</h1>
         <div class="view-header-right">
           <div class="dashboard-modes" id="dashboard-modes">
-            <button class="mode-btn active" data-mode="expanded" title="Expandido">
+            <button class="mode-btn active" data-mode="expanded" data-i18n-title="mode.expanded">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/></svg>
-              <span>Expandido</span>
+              <span data-i18n="mode.expanded">Expandido</span>
             </button>
-            <button class="mode-btn" data-mode="compact" title="Compacto">
+            <button class="mode-btn" data-mode="compact" data-i18n-title="mode.compact">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="12" x2="21" y2="12"/></svg>
-              <span>Compacto</span>
+              <span data-i18n="mode.compact">Compacto</span>
             </button>
-            <button class="mode-btn" data-mode="mini" title="Mini">
+            <button class="mode-btn" data-mode="mini" data-i18n-title="mode.mini">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="8" rx="2"/></svg>
-              <span>Mini</span>
+              <span data-i18n="mode.mini">Mini</span>
             </button>
           </div>
-          <span class="status-badge" id="status">Conectando...</span>
+          <button class="widget-toggle-btn" id="widget-toggle-btn" data-i18n-title="widget.btn_title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <span data-i18n="widget.btn">Widget Flotante</span>
+            <span class="beta-badge" data-i18n="badge.beta">BETA</span>
+          </button>
+          <span class="status-badge" id="status" data-i18n="status.connecting">Conectando...</span>
           <span class="update-rate">1.5s</span>
         </div>
       </div>
@@ -120,10 +136,10 @@
           </div>
           <div class="card-body compact-visible">
             <div class="stat-row">
-              <div class="stat"><span class="stat-label">Uso</span><span class="stat-value" id="cpu-usage">--%</span></div>
-              <div class="stat"><span class="stat-label">Temp</span><span class="stat-value" id="cpu-temp">--</span></div>
-              <div class="stat"><span class="stat-label">Freq</span><span class="stat-value" id="cpu-freq">--</span></div>
-              <div class="stat"><span class="stat-label">Nucleos</span><span class="stat-value" id="cpu-cores">--</span></div>
+              <div class="stat"><span class="stat-label" data-i18n="label.usage">Uso</span><span class="stat-value" id="cpu-usage">--%</span></div>
+              <div class="stat"><span class="stat-label" data-i18n="label.temp">Temp</span><span class="stat-value" id="cpu-temp">--</span></div>
+              <div class="stat"><span class="stat-label" data-i18n="label.freq">Freq</span><span class="stat-value" id="cpu-freq">--</span></div>
+              <div class="stat"><span class="stat-label" data-i18n="label.cores">Núcleos</span><span class="stat-value" id="cpu-cores">--</span></div>
             </div>
             <div class="chart-container compact-chart">
               <canvas id="cpu-chart"></canvas>
@@ -132,7 +148,7 @@
           <div class="card-body expanded-only">
             <div class="cores-grid" id="cores-grid"></div>
             <details class="detail-section" id="cpu-details">
-              <summary class="detail-toggle">Sensores detallados del CPU</summary>
+              <summary class="detail-toggle" data-i18n="cpu.detailed">Sensores detallados del CPU</summary>
               <div class="detail-sensors-grid" id="cpu-sensors-grid"></div>
             </details>
           </div>
@@ -152,9 +168,9 @@
           </div>
           <div class="card-body compact-visible">
             <div class="stat-row">
-              <div class="stat"><span class="stat-label">Usada</span><span class="stat-value" id="ram-used">--</span></div>
-              <div class="stat"><span class="stat-label">Disponible</span><span class="stat-value" id="ram-available">--</span></div>
-              <div class="stat"><span class="stat-label">Total</span><span class="stat-value" id="ram-total">--</span></div>
+              <div class="stat"><span class="stat-label" data-i18n="label.used">Usada</span><span class="stat-value" id="ram-used">--</span></div>
+              <div class="stat"><span class="stat-label" data-i18n="label.available">Disponible</span><span class="stat-value" id="ram-available">--</span></div>
+              <div class="stat"><span class="stat-label" data-i18n="label.total">Total</span><span class="stat-value" id="ram-total">--</span></div>
             </div>
             <div class="ram-bar-container">
               <div class="ram-bar" id="ram-bar"><span id="ram-bar-text">0%</span></div>
@@ -165,7 +181,7 @@
           </div>
           <div class="card-body expanded-only">
             <div class="swap-section">
-              <span class="stat-label">Swap:</span>
+              <span class="stat-label" data-i18n="label.swap">Swap:</span>
               <span class="stat-value" id="swap-info">--</span>
             </div>
           </div>
@@ -186,9 +202,9 @@
           </div>
           <div class="card-body compact-visible" id="gpu-body">
             <div class="stat-row">
-              <div class="stat"><span class="stat-label">Uso</span><span class="stat-value" id="gpu-usage">--%</span></div>
-              <div class="stat"><span class="stat-label">Temp</span><span class="stat-value" id="gpu-temp">--</span></div>
-              <div class="stat"><span class="stat-label">Fan</span><span class="stat-value" id="gpu-fan">--%</span></div>
+              <div class="stat"><span class="stat-label" data-i18n="label.usage">Uso</span><span class="stat-value" id="gpu-usage">--%</span></div>
+              <div class="stat"><span class="stat-label" data-i18n="label.temp">Temp</span><span class="stat-value" id="gpu-temp">--</span></div>
+              <div class="stat"><span class="stat-label" data-i18n="label.fan">Fan</span><span class="stat-value" id="gpu-fan">--%</span></div>
             </div>
             <div class="chart-container compact-chart">
               <canvas id="gpu-chart"></canvas>
@@ -197,20 +213,20 @@
           <div class="card-body expanded-only">
             <div class="stat-row">
               <div class="stat"><span class="stat-label">VRAM</span><span class="stat-value" id="gpu-vram-used">--</span></div>
-              <div class="stat"><span class="stat-label">Total</span><span class="stat-value" id="gpu-vram-total">--</span></div>
+              <div class="stat"><span class="stat-label" data-i18n="label.total">Total</span><span class="stat-value" id="gpu-vram-total">--</span></div>
               <div class="stat"><span class="stat-label">%</span><span class="stat-value" id="gpu-vram-percent">--</span></div>
             </div>
             <div class="ram-bar-container">
               <div class="ram-bar gpu-vram-bar" id="gpu-vram-bar"><span id="gpu-vram-bar-text">0%</span></div>
             </div>
             <div class="stat-row">
-              <div class="stat"><span class="stat-label">Consumo</span><span class="stat-value" id="gpu-power">--</span></div>
-              <div class="stat"><span class="stat-label">Limite</span><span class="stat-value" id="gpu-power-limit">--</span></div>
-              <div class="stat"><span class="stat-label">Clock</span><span class="stat-value" id="gpu-clock-gfx">--</span></div>
-              <div class="stat"><span class="stat-label">Mem</span><span class="stat-value" id="gpu-clock-mem">--</span></div>
+              <div class="stat"><span class="stat-label" data-i18n="label.consumption">Consumo</span><span class="stat-value" id="gpu-power">--</span></div>
+              <div class="stat"><span class="stat-label" data-i18n="label.limit">Límite</span><span class="stat-value" id="gpu-power-limit">--</span></div>
+              <div class="stat"><span class="stat-label" data-i18n="label.clock">Clock</span><span class="stat-value" id="gpu-clock-gfx">--</span></div>
+              <div class="stat"><span class="stat-label" data-i18n="label.mem">Mem</span><span class="stat-value" id="gpu-clock-mem">--</span></div>
             </div>
             <details class="detail-section" id="gpu-details">
-              <summary class="detail-toggle">Sensores detallados de la GPU</summary>
+              <summary class="detail-toggle" data-i18n="gpu.detailed">Sensores detallados de la GPU</summary>
               <div class="detail-sensors-grid" id="gpu-sensors-grid"></div>
             </details>
           </div>
@@ -221,7 +237,7 @@
           <div class="card-header">
             <div class="card-icon neon-cyan"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12c-2-3-6-4-6-8a6 6 0 0 1 12 0c0 4-4 5-6 8z"/><path d="M12 12c3 2 4 6 8 6a6 6 0 0 0 0-12c-4 0-5 4-8 6z"/><path d="M12 12c2 3 6 4 6 8a6 6 0 0 1-12 0c0-4 4-5 6-8z"/><path d="M12 12c-3-2-4-6-8-6a6 6 0 0 0 0 12c4 0 5-4 8-6z"/><circle cx="12" cy="12" r="2"/></svg></div>
             <div class="card-header-info">
-              <h2>Ventiladores</h2>
+              <h2 data-i18n="nav.fans">Ventiladores</h2>
               <p class="card-subtitle" id="fans-count">--</p>
             </div>
             <div class="card-mini-stats">
@@ -230,7 +246,7 @@
           </div>
           <div class="card-body compact-visible">
             <div class="fans-grid" id="fans-grid">
-              <p class="hint-text" id="fans-hint">Cargando...</p>
+              <p class="hint-text" id="fans-hint" data-i18n="fans.loading">Cargando...</p>
             </div>
           </div>
         </section>
@@ -240,7 +256,7 @@
           <div class="card-header">
             <div class="card-icon neon-green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
             <div class="card-header-info">
-              <h2>Discos</h2>
+              <h2 data-i18n="nav.disks">Discos</h2>
               <p class="card-subtitle" id="disk-count">--</p>
             </div>
           </div>
@@ -249,7 +265,7 @@
           </div>
           <div class="card-body expanded-only">
             <details class="detail-section" id="disk-details">
-              <summary class="detail-toggle">Temperaturas de discos</summary>
+              <summary class="detail-toggle" data-i18n="disks.temps">Temperaturas de discos</summary>
               <div class="detail-sensors-grid" id="disk-sensors-grid"></div>
             </details>
           </div>
@@ -260,23 +276,23 @@
           <div class="card-header">
             <div class="card-icon neon-yellow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2"/><rect x="6" y="6" width="4" height="4"/><rect x="14" y="6" width="4" height="4"/><line x1="6" y1="14" x2="6" y2="18"/><line x1="10" y1="14" x2="10" y2="18"/><line x1="14" y1="14" x2="18" y2="14"/><line x1="14" y1="18" x2="18" y2="18"/></svg></div>
             <div class="card-header-info">
-              <h2>Placa Base</h2>
+              <h2 data-i18n="nav.mobo">Placa Base</h2>
               <p class="card-subtitle" id="mobo-name">--</p>
             </div>
           </div>
           <div class="card-body compact-visible">
             <div class="mobo-section" id="mobo-temps-section">
-              <h3 class="section-title">Temperaturas</h3>
+              <h3 class="section-title" data-i18n="mobo.temperatures">Temperaturas</h3>
               <div class="detail-sensors-grid" id="mobo-temps-grid"></div>
             </div>
           </div>
           <div class="card-body expanded-only">
             <div class="mobo-section" id="mobo-volts-section">
-              <h3 class="section-title">Voltajes</h3>
+              <h3 class="section-title" data-i18n="mobo.voltages">Voltajes</h3>
               <div class="detail-sensors-grid" id="mobo-volts-grid"></div>
             </div>
             <details class="detail-section" id="mobo-details">
-              <summary class="detail-toggle">Otros sensores</summary>
+              <summary class="detail-toggle" data-i18n="mobo.other">Otros sensores</summary>
               <div class="detail-sensors-grid" id="mobo-other-grid"></div>
             </details>
           </div>
@@ -287,7 +303,7 @@
           <div class="card-header">
             <div class="card-icon neon-cyan"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
             <div class="card-header-info">
-              <h2>Red</h2>
+              <h2 data-i18n="nav.net">Red</h2>
               <p class="card-subtitle" id="net-subtitle">--</p>
             </div>
             <div class="card-mini-stats">
@@ -297,8 +313,8 @@
           </div>
           <div class="card-body compact-visible">
             <div class="stat-row">
-              <div class="stat"><span class="stat-label">Descarga</span><span class="stat-value" id="net-download">--</span></div>
-              <div class="stat"><span class="stat-label">Subida</span><span class="stat-value" id="net-upload">--</span></div>
+              <div class="stat"><span class="stat-label" data-i18n="label.download">Descarga</span><span class="stat-value" id="net-download">--</span></div>
+              <div class="stat"><span class="stat-label" data-i18n="label.upload">Subida</span><span class="stat-value" id="net-upload">--</span></div>
             </div>
             <div class="chart-container compact-chart">
               <canvas id="net-chart"></canvas>
@@ -306,8 +322,8 @@
           </div>
           <div class="card-body expanded-only">
             <div class="stat-row">
-              <div class="stat"><span class="stat-label">Total Rx</span><span class="stat-value" id="net-total-rx">--</span></div>
-              <div class="stat"><span class="stat-label">Total Tx</span><span class="stat-value" id="net-total-tx">--</span></div>
+              <div class="stat"><span class="stat-label" data-i18n="label.totalRx">Total Rx</span><span class="stat-value" id="net-total-rx">--</span></div>
+              <div class="stat"><span class="stat-label" data-i18n="label.totalTx">Total Tx</span><span class="stat-value" id="net-total-tx">--</span></div>
             </div>
             <div class="net-interfaces" id="net-interfaces"></div>
           </div>
@@ -324,17 +340,17 @@
       </div>
       <div class="detail-view">
         <div class="detail-top-stats">
-          <div class="detail-stat big"><span class="stat-label">Uso Global</span><span class="stat-value" id="dcpu-usage">--%</span></div>
-          <div class="detail-stat big"><span class="stat-label">Temperatura</span><span class="stat-value" id="dcpu-temp">--</span></div>
-          <div class="detail-stat"><span class="stat-label">Frecuencia</span><span class="stat-value" id="dcpu-freq">--</span></div>
-          <div class="detail-stat"><span class="stat-label">Nucleos</span><span class="stat-value" id="dcpu-cores">--</span></div>
+          <div class="detail-stat big"><span class="stat-label" data-i18n="detail.cpu.global">Uso Global</span><span class="stat-value" id="dcpu-usage">--%</span></div>
+          <div class="detail-stat big"><span class="stat-label" data-i18n="detail.cpu.temperature">Temperatura</span><span class="stat-value" id="dcpu-temp">--</span></div>
+          <div class="detail-stat"><span class="stat-label" data-i18n="detail.cpu.frequency">Frecuencia</span><span class="stat-value" id="dcpu-freq">--</span></div>
+          <div class="detail-stat"><span class="stat-label" data-i18n="label.cores">Núcleos</span><span class="stat-value" id="dcpu-cores">--</span></div>
         </div>
         <div class="detail-chart-container">
           <canvas id="dcpu-chart"></canvas>
         </div>
-        <h3 class="section-title">Uso por nucleo</h3>
+        <h3 class="section-title" data-i18n="detail.cpu.usage_core">Uso por núcleo</h3>
         <div class="cores-grid detail-cores" id="dcpu-cores-grid"></div>
-        <h3 class="section-title">Sensores del CPU</h3>
+        <h3 class="section-title" data-i18n="detail.cpu.sensors">Sensores del CPU</h3>
         <div class="detail-sensors-grid" id="dcpu-sensors-grid"></div>
       </div>
     </div>
@@ -346,10 +362,10 @@
       </div>
       <div class="detail-view">
         <div class="detail-top-stats">
-          <div class="detail-stat big"><span class="stat-label">Usada</span><span class="stat-value" id="dram-used">--</span></div>
-          <div class="detail-stat big"><span class="stat-label">Disponible</span><span class="stat-value" id="dram-available">--</span></div>
-          <div class="detail-stat"><span class="stat-label">Total</span><span class="stat-value" id="dram-total">--</span></div>
-          <div class="detail-stat"><span class="stat-label">Porcentaje</span><span class="stat-value" id="dram-percent">--%</span></div>
+          <div class="detail-stat big"><span class="stat-label" data-i18n="label.used">Usada</span><span class="stat-value" id="dram-used">--</span></div>
+          <div class="detail-stat big"><span class="stat-label" data-i18n="label.available">Disponible</span><span class="stat-value" id="dram-available">--</span></div>
+          <div class="detail-stat"><span class="stat-label" data-i18n="label.total">Total</span><span class="stat-value" id="dram-total">--</span></div>
+          <div class="detail-stat"><span class="stat-label" data-i18n="detail.ram.percent">Porcentaje</span><span class="stat-value" id="dram-percent">--%</span></div>
         </div>
         <div class="ram-bar-container detail-bar">
           <div class="ram-bar" id="dram-bar"><span id="dram-bar-text">0%</span></div>
@@ -358,8 +374,8 @@
           <canvas id="dram-chart"></canvas>
         </div>
         <div class="detail-top-stats" style="margin-top:20px">
-          <div class="detail-stat"><span class="stat-label">Swap Usado</span><span class="stat-value" id="dram-swap-used">--</span></div>
-          <div class="detail-stat"><span class="stat-label">Swap Total</span><span class="stat-value" id="dram-swap-total">--</span></div>
+          <div class="detail-stat"><span class="stat-label" data-i18n="detail.ram.swap_used">Swap Usado</span><span class="stat-value" id="dram-swap-used">--</span></div>
+          <div class="detail-stat"><span class="stat-label" data-i18n="detail.ram.swap_total">Swap Total</span><span class="stat-value" id="dram-swap-total">--</span></div>
         </div>
       </div>
     </div>
@@ -372,30 +388,30 @@
       </div>
       <div class="detail-view">
         <div class="detail-top-stats">
-          <div class="detail-stat big"><span class="stat-label">Uso</span><span class="stat-value" id="dgpu-usage">--%</span></div>
-          <div class="detail-stat big"><span class="stat-label">Temperatura</span><span class="stat-value" id="dgpu-temp">--</span></div>
-          <div class="detail-stat"><span class="stat-label">Fan</span><span class="stat-value" id="dgpu-fan">--%</span></div>
-          <div class="detail-stat"><span class="stat-label">Consumo</span><span class="stat-value" id="dgpu-power">--</span></div>
+          <div class="detail-stat big"><span class="stat-label" data-i18n="label.usage">Uso</span><span class="stat-value" id="dgpu-usage">--%</span></div>
+          <div class="detail-stat big"><span class="stat-label" data-i18n="detail.cpu.temperature">Temperatura</span><span class="stat-value" id="dgpu-temp">--</span></div>
+          <div class="detail-stat"><span class="stat-label" data-i18n="label.fan">Fan</span><span class="stat-value" id="dgpu-fan">--%</span></div>
+          <div class="detail-stat"><span class="stat-label" data-i18n="label.consumption">Consumo</span><span class="stat-value" id="dgpu-power">--</span></div>
         </div>
         <div class="detail-chart-container">
           <canvas id="dgpu-chart"></canvas>
         </div>
         <h3 class="section-title">VRAM</h3>
         <div class="detail-top-stats">
-          <div class="detail-stat"><span class="stat-label">Usada</span><span class="stat-value" id="dgpu-vram-used">--</span></div>
-          <div class="detail-stat"><span class="stat-label">Total</span><span class="stat-value" id="dgpu-vram-total">--</span></div>
-          <div class="detail-stat"><span class="stat-label">Porcentaje</span><span class="stat-value" id="dgpu-vram-pct">--%</span></div>
+          <div class="detail-stat"><span class="stat-label" data-i18n="label.used">Usada</span><span class="stat-value" id="dgpu-vram-used">--</span></div>
+          <div class="detail-stat"><span class="stat-label" data-i18n="label.total">Total</span><span class="stat-value" id="dgpu-vram-total">--</span></div>
+          <div class="detail-stat"><span class="stat-label" data-i18n="detail.ram.percent">Porcentaje</span><span class="stat-value" id="dgpu-vram-pct">--%</span></div>
         </div>
         <div class="ram-bar-container detail-bar">
           <div class="ram-bar gpu-vram-bar" id="dgpu-vram-bar"><span id="dgpu-vram-text">0%</span></div>
         </div>
-        <h3 class="section-title">Relojes y Limites</h3>
+        <h3 class="section-title" data-i18n="detail.gpu.clocks">Relojes y Límites</h3>
         <div class="detail-top-stats">
-          <div class="detail-stat"><span class="stat-label">Clock GPU</span><span class="stat-value" id="dgpu-clock-gfx">--</span></div>
-          <div class="detail-stat"><span class="stat-label">Clock MEM</span><span class="stat-value" id="dgpu-clock-mem">--</span></div>
-          <div class="detail-stat"><span class="stat-label">Limite W</span><span class="stat-value" id="dgpu-power-limit">--</span></div>
+          <div class="detail-stat"><span class="stat-label" data-i18n="detail.gpu.clock_gpu">Clock GPU</span><span class="stat-value" id="dgpu-clock-gfx">--</span></div>
+          <div class="detail-stat"><span class="stat-label" data-i18n="detail.gpu.clock_mem">Clock MEM</span><span class="stat-value" id="dgpu-clock-mem">--</span></div>
+          <div class="detail-stat"><span class="stat-label" data-i18n="detail.gpu.power_limit">Límite W</span><span class="stat-value" id="dgpu-power-limit">--</span></div>
         </div>
-        <h3 class="section-title">Sensores de la GPU</h3>
+        <h3 class="section-title" data-i18n="detail.gpu.sensors">Sensores de la GPU</h3>
         <div class="detail-sensors-grid" id="dgpu-sensors-grid"></div>
       </div>
     </div>
@@ -408,7 +424,7 @@
       </div>
       <div class="detail-view">
         <div class="disks-list detail-disks" id="ddisk-list"></div>
-        <h3 class="section-title">Temperaturas</h3>
+        <h3 class="section-title" data-i18n="mobo.temperatures">Temperaturas</h3>
         <div class="detail-sensors-grid" id="ddisk-temps-grid"></div>
       </div>
     </div>
@@ -431,11 +447,11 @@
         <span class="view-subtitle" id="dmobo-name">--</span>
       </div>
       <div class="detail-view">
-        <h3 class="section-title">Temperaturas</h3>
+        <h3 class="section-title" data-i18n="mobo.temperatures">Temperaturas</h3>
         <div class="detail-sensors-grid" id="dmobo-temps-grid"></div>
-        <h3 class="section-title">Voltajes</h3>
+        <h3 class="section-title" data-i18n="mobo.voltages">Voltajes</h3>
         <div class="detail-sensors-grid" id="dmobo-volts-grid"></div>
-        <h3 class="section-title">Otros Sensores</h3>
+        <h3 class="section-title" data-i18n="mobo.other_title">Otros Sensores</h3>
         <div class="detail-sensors-grid" id="dmobo-other-grid"></div>
       </div>
     </div>
@@ -448,15 +464,15 @@
       </div>
       <div class="detail-view">
         <div class="detail-top-stats">
-          <div class="detail-stat big"><span class="stat-label">Descarga</span><span class="stat-value" id="dnet-download">--</span></div>
-          <div class="detail-stat big"><span class="stat-label">Subida</span><span class="stat-value" id="dnet-upload">--</span></div>
-          <div class="detail-stat"><span class="stat-label">Total Rx</span><span class="stat-value" id="dnet-total-rx">--</span></div>
-          <div class="detail-stat"><span class="stat-label">Total Tx</span><span class="stat-value" id="dnet-total-tx">--</span></div>
+          <div class="detail-stat big"><span class="stat-label" data-i18n="label.download">Descarga</span><span class="stat-value" id="dnet-download">--</span></div>
+          <div class="detail-stat big"><span class="stat-label" data-i18n="label.upload">Subida</span><span class="stat-value" id="dnet-upload">--</span></div>
+          <div class="detail-stat"><span class="stat-label" data-i18n="label.totalRx">Total Rx</span><span class="stat-value" id="dnet-total-rx">--</span></div>
+          <div class="detail-stat"><span class="stat-label" data-i18n="label.totalTx">Total Tx</span><span class="stat-value" id="dnet-total-tx">--</span></div>
         </div>
         <div class="detail-chart-container">
           <canvas id="dnet-chart"></canvas>
         </div>
-        <h3 class="section-title">Interfaces</h3>
+        <h3 class="section-title" data-i18n="net.interfaces">Interfaces</h3>
         <div class="net-interfaces detail-ifaces" id="dnet-interfaces"></div>
       </div>
     </div>
@@ -470,69 +486,69 @@
 
         <div class="about-hero">
           <h2 class="about-app-name">Monitor Xpress</h2>
-          <span class="about-version">v0.2.1</span>
-          <p class="about-tagline">Monitorización de hardware en tiempo real</p>
-          <p class="about-author">Desarrollado por <a href="https://www.atomicode.net" target="_blank" class="footer-link">Atomicode®</a></p>
+          <span class="about-version">v0.3.0</span>
+          <p class="about-tagline" data-i18n="about.tagline">Monitorización de hardware en tiempo real</p>
+          <p class="about-author" data-i18n-html="about.developed_by_html">Desarrollado por <a href="https://www.atomicode.net" target="_blank" class="footer-link">Atomicode®</a></p>
         </div>
 
         <div class="about-section">
-          <h3 class="section-title">Licencia</h3>
+          <h3 class="section-title" data-i18n="about.license.title">Licencia</h3>
           <div class="about-card">
-            <p>Monitor Xpress es software libre distribuido bajo la <strong>Mozilla Public License 2.0 (MPL-2.0)</strong>.</p>
-            <p>Su código fuente es abierto y puede ser utilizado, modificado y redistribuido bajo los términos de dicha licencia. Este proyecto no tiene fines de lucro.</p>
-            <p class="about-link-line"><a href="https://mozilla.org/en-US/MPL/2.0/" target="_blank" class="footer-link">Leer licencia completa (MPL-2.0)</a></p>
+            <p data-i18n-html="about.license.body1_html">Monitor Xpress es software libre distribuido bajo la <strong>Mozilla Public License 2.0 (MPL-2.0)</strong>.</p>
+            <p data-i18n="about.license.body2">Su código fuente es abierto y puede ser utilizado, modificado y redistribuido bajo los términos de dicha licencia. Este proyecto no tiene fines de lucro.</p>
+            <p class="about-link-line"><a href="https://mozilla.org/en-US/MPL/2.0/" target="_blank" class="footer-link" data-i18n="about.license.read">Leer licencia completa (MPL-2.0)</a></p>
           </div>
         </div>
 
         <div class="about-section">
-          <h3 class="section-title">Política de privacidad</h3>
+          <h3 class="section-title" data-i18n="about.privacy.title">Política de privacidad</h3>
           <div class="about-card">
-            <p><strong>Monitor Xpress NO recopila, transmite ni almacena datos personales.</strong></p>
-            <p>Toda la información de hardware se procesa exclusivamente de forma local en tu equipo. No se envían datos a servidores externos. No se utilizan cookies, rastreadores ni herramientas de analítica.</p>
-            <p>Las métricas en tiempo real se mantienen en memoria durante la ejecución y se descartan al cerrar la aplicación. Las preferencias de interfaz (tema, modo de vista) se guardan localmente en tu equipo.</p>
-            <p>El permiso de administrador es necesario exclusivamente para la lectura de sensores de hardware mediante LibreHardwareMonitor. No se utiliza para ningún otro propósito.</p>
+            <p data-i18n-html="about.privacy.body1_html"><strong>Monitor Xpress NO recopila, transmite ni almacena datos personales.</strong></p>
+            <p data-i18n="about.privacy.body2">Toda la información de hardware se procesa exclusivamente de forma local en tu equipo. No se envían datos a servidores externos. No se utilizan cookies, rastreadores ni herramientas de analítica.</p>
+            <p data-i18n="about.privacy.body3">Las métricas en tiempo real se mantienen en memoria durante la ejecución y se descartan al cerrar la aplicación. Las preferencias de interfaz (tema, idioma, modo de vista) se guardan localmente en tu equipo.</p>
+            <p data-i18n="about.privacy.body4">El permiso de administrador es necesario exclusivamente para la lectura de sensores de hardware mediante LibreHardwareMonitor. No se utiliza para ningún otro propósito.</p>
           </div>
         </div>
 
         <div class="about-section">
-          <h3 class="section-title">Aviso legal</h3>
+          <h3 class="section-title" data-i18n="about.legal.title">Aviso legal</h3>
           <div class="about-card">
-            <p>Este software se proporciona <strong>"tal cual"</strong>, sin garantías de ningún tipo, expresas o implícitas. Atomicode® no será responsable de daños directos, indirectos, incidentales o consecuentes derivados del uso de este software.</p>
+            <p data-i18n-html="about.legal.body_html">Este software se proporciona <strong>"tal cual"</strong>, sin garantías de ningún tipo, expresas o implícitas. Atomicode® no será responsable de daños directos, indirectos, incidentales o consecuentes derivados del uso de este software.</p>
           </div>
         </div>
 
         <div class="about-section">
-          <h3 class="section-title">Reconocimientos</h3>
+          <h3 class="section-title" data-i18n="about.credits.title">Reconocimientos</h3>
           <div class="about-card">
             <table class="about-table">
               <thead>
-                <tr><th>Componente</th><th>Licencia</th><th>Uso</th></tr>
+                <tr><th data-i18n="about.credits.component">Componente</th><th data-i18n="about.credits.license">Licencia</th><th data-i18n="about.credits.use">Uso</th></tr>
               </thead>
               <tbody>
                 <tr>
                   <td><a href="https://github.com/LibreHardwareMonitor/LibreHardwareMonitor" target="_blank" class="footer-link">LibreHardwareMonitor</a></td>
                   <td>MPL-2.0</td>
-                  <td>Lectura de sensores de hardware</td>
+                  <td data-i18n="about.credits.use_lhm">Lectura de sensores de hardware</td>
                 </tr>
                 <tr>
                   <td><a href="https://tauri.app" target="_blank" class="footer-link">Tauri</a></td>
                   <td>MIT / Apache-2.0</td>
-                  <td>Framework de aplicación de escritorio</td>
+                  <td data-i18n="about.credits.use_tauri">Framework de aplicación de escritorio</td>
                 </tr>
                 <tr>
                   <td><a href="https://www.chartjs.org" target="_blank" class="footer-link">Chart.js</a></td>
                   <td>MIT</td>
-                  <td>Gráficas en tiempo real</td>
+                  <td data-i18n="about.credits.use_chart">Gráficas en tiempo real</td>
                 </tr>
                 <tr>
                   <td>sysinfo (crate)</td>
                   <td>MIT</td>
-                  <td>Información de CPU, RAM, discos y red</td>
+                  <td data-i18n="about.credits.use_sysinfo">Información de CPU, RAM, discos y red</td>
                 </tr>
                 <tr>
                   <td>nvml-wrapper (crate)</td>
                   <td>MIT / Apache-2.0</td>
-                  <td>Monitorización GPU NVIDIA</td>
+                  <td data-i18n="about.credits.use_nvml">Monitorización GPU NVIDIA</td>
                 </tr>
               </tbody>
             </table>
@@ -540,11 +556,11 @@
         </div>
 
         <div class="about-section">
-          <h3 class="section-title">Contacto</h3>
+          <h3 class="section-title" data-i18n="about.contact.title">Contacto</h3>
           <div class="about-card">
             <p><strong>Atomicode®</strong></p>
-            <p>Correo: <a href="mailto:soporte@atomicode.net" class="footer-link">soporte@atomicode.net</a></p>
-            <p>Web: <a href="https://www.atomicode.net" target="_blank" class="footer-link">www.atomicode.net</a></p>
+            <p><span data-i18n="about.contact.email">Correo:</span> <a href="mailto:soporte@atomicode.net" class="footer-link">soporte@atomicode.net</a></p>
+            <p><span data-i18n="about.contact.web">Web:</span> <a href="https://www.atomicode.net" target="_blank" class="footer-link">www.atomicode.net</a></p>
           </div>
         </div>
 
@@ -554,17 +570,34 @@
     <!-- FOOTER -->
     <footer class="app-footer">
       <div class="footer-left">
-        <span class="footer-version">Monitor Xpress v0.2.1</span>
+        <span class="footer-version">Monitor Xpress v0.3.0</span>
         <span class="footer-sep">|</span>
-        <span>Un proyecto de <a href="https://www.atomicode.net" target="_blank" class="footer-link">Atomicode®</a></span>
+        <span data-i18n-html="footer.project_by_html">Un proyecto de <a href="https://www.atomicode.net" target="_blank" class="footer-link">Atomicode®</a></span>
       </div>
       <div class="footer-right">
-        <span>Sensores via <a href="https://github.com/LibreHardwareMonitor/LibreHardwareMonitor" target="_blank" class="footer-link">LibreHardwareMonitor</a></span>
+        <span data-i18n-html="footer.sensors_by_html">Sensores via <a href="https://github.com/LibreHardwareMonitor/LibreHardwareMonitor" target="_blank" class="footer-link">LibreHardwareMonitor</a></span>
       </div>
     </footer>
 
   </main>
   </div><!-- /app-container -->
+
+  <!-- Widget confirmation modal -->
+  <div class="modal-overlay" id="widget-modal">
+    <div class="modal-content">
+      <div class="modal-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+      <h3 class="modal-title"><span data-i18n="modal.widget.title">Widget Flotante</span> <span class="beta-badge" data-i18n="badge.beta">BETA</span></h3>
+      <p class="modal-text" data-i18n-html="modal.widget.text1_html">Esta función se encuentra en <strong>fase de pruebas</strong> y puede afectar el rendimiento del sistema o presentar comportamientos inesperados.</p>
+      <p class="modal-text" data-i18n="modal.widget.text2">Al activarlo, se abrirá una ventana flotante con las métricas principales y se ocultará la ventana principal de Monitor Xpress.</p>
+      <p class="modal-text" data-i18n="modal.widget.text3">¿Deseas continuar?</p>
+      <div class="modal-actions">
+        <button class="modal-btn modal-btn-cancel" id="widget-modal-cancel" data-i18n="modal.widget.cancel">Rechazar</button>
+        <button class="modal-btn modal-btn-accept" id="widget-modal-accept" data-i18n="modal.widget.accept">Aceptar</button>
+      </div>
+    </div>
+  </div>
 
   <script type="module" src="/main.js"></script>
 </body>

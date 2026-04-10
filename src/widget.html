@@ -1,0 +1,331 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+     License, v. 2.0. If a copy of the MPL was not distributed with this
+     file, You can obtain one at https://mozilla.org/MPL/2.0/.
+     Copyright (c) 2026 Atomicode® — Monitor Xpress -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>MX Widget</title>
+  <script src="/i18n.js"></script>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: rgba(10,14,28,0.82);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      color: #e6edf3;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      flex-direction: column;
+      user-select: none;
+    }
+
+    /* Drag bar */
+    .widget-drag {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      cursor: default;
+    }
+
+    .widget-title {
+      font-size: 0.6rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #00e5ff, #00d4ff, #bf5fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 0.3px;
+    }
+
+    .widget-controls {
+      display: flex;
+      gap: 4px;
+    }
+
+    .widget-btn {
+      width: 20px; height: 20px;
+      border: none; border-radius: 5px;
+      background: rgba(255,255,255,0.06);
+      color: rgba(180,190,210,0.7);
+      font-size: 0.55rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.15s;
+    }
+    .widget-btn:hover { background: rgba(255,255,255,0.12); color: #fff; }
+    .widget-btn-back:hover { background: rgba(0,212,255,0.15); color: #00d4ff; }
+    .widget-btn-close:hover { background: rgba(255,71,87,0.2); color: #ff4757; }
+
+    /* Content */
+    .widget-content {
+      flex: 1;
+      padding: 8px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      overflow: hidden;
+    }
+
+    .widget-section {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 6px 9px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 3px;
+    }
+
+    .section-label {
+      font-size: 0.55rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .label-cpu { color: #00d4ff; }
+    .label-ram { color: #bf5fff; }
+    .label-gpu { color: #00ff87; }
+
+    .section-value-main {
+      font-size: 0.85rem;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .stats-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .stat-mini {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .stat-mini-label {
+      font-size: 0.45rem;
+      color: rgba(180,190,210,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .stat-mini-value {
+      font-size: 0.68rem;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      color: rgba(230,237,243,0.9);
+    }
+
+    /* Mini bar */
+    .mini-bar {
+      height: 3px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 2px;
+      margin-top: 4px;
+      overflow: hidden;
+    }
+    .mini-bar-fill {
+      height: 100%;
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+    .bar-cpu { background: #00d4ff; }
+    .bar-ram { background: #bf5fff; }
+    .bar-gpu { background: #00ff87; }
+
+    /* Usage color classes */
+    .low { color: #00ff87; }
+    .medium { color: #ffc107; }
+    .high { color: #ff4757; }
+
+    .status-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: #00ff87;
+      display: inline-block;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="widget-drag" id="drag-region">
+    <span class="widget-title" data-i18n="widget.app_title">MONITOR XPRESS</span>
+    <div class="widget-controls">
+      <button class="widget-btn widget-btn-back" id="btn-back" data-i18n-title="widget.back_title">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg>
+      </button>
+      <button class="widget-btn widget-btn-close" id="btn-close" data-i18n-title="widget.close_title">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="widget-content">
+
+    <!-- CPU -->
+    <div class="widget-section">
+      <div class="section-header">
+        <span class="section-label label-cpu" data-i18n="widget.label.cpu">CPU</span>
+        <span class="section-value-main" id="cpu-usage">--%</span>
+      </div>
+      <div class="stats-row">
+        <div class="stat-mini">
+          <span class="stat-mini-label" data-i18n="widget.label.temp">Temp</span>
+          <span class="stat-mini-value" id="cpu-temp">--</span>
+        </div>
+        <div class="stat-mini">
+          <span class="stat-mini-label" data-i18n="widget.label.freq">Freq</span>
+          <span class="stat-mini-value" id="cpu-freq">--</span>
+        </div>
+      </div>
+      <div class="mini-bar"><div class="mini-bar-fill bar-cpu" id="cpu-bar" style="width:0%"></div></div>
+    </div>
+
+    <!-- RAM -->
+    <div class="widget-section">
+      <div class="section-header">
+        <span class="section-label label-ram" data-i18n="widget.label.ram">RAM</span>
+        <span class="section-value-main" id="ram-percent">--%</span>
+      </div>
+      <div class="stats-row">
+        <div class="stat-mini">
+          <span class="stat-mini-label" data-i18n="widget.label.used">Usada</span>
+          <span class="stat-mini-value" id="ram-used">--</span>
+        </div>
+        <div class="stat-mini">
+          <span class="stat-mini-label" data-i18n="widget.label.available">Disponible</span>
+          <span class="stat-mini-value" id="ram-available">--</span>
+        </div>
+      </div>
+      <div class="mini-bar"><div class="mini-bar-fill bar-ram" id="ram-bar" style="width:0%"></div></div>
+    </div>
+
+    <!-- GPU -->
+    <div class="widget-section">
+      <div class="section-header">
+        <span class="section-label label-gpu" data-i18n="widget.label.gpu">GPU</span>
+        <span class="section-value-main" id="gpu-usage">--%</span>
+      </div>
+      <div class="stats-row">
+        <div class="stat-mini">
+          <span class="stat-mini-label" data-i18n="widget.label.temp">Temp</span>
+          <span class="stat-mini-value" id="gpu-temp">--</span>
+        </div>
+        <div class="stat-mini">
+          <span class="stat-mini-label" data-i18n="widget.label.consumption">Consumo</span>
+          <span class="stat-mini-value" id="gpu-power">--</span>
+        </div>
+      </div>
+      <div class="mini-bar"><div class="mini-bar-fill bar-gpu" id="gpu-bar" style="width:0%"></div></div>
+    </div>
+
+  </div>
+
+  <script>
+    const { invoke } = window.__TAURI__.core;
+    const { getCurrentWindow } = window.__TAURI__.window;
+
+    // Apply i18n and listen for language changes from main window
+    if (window.MXi18n) {
+      window.MXi18n.applyI18n();
+      window.__TAURI__.event.listen("mx-lang-changed", (e) => {
+        if (e.payload && window.MXi18n.getLang() !== e.payload) {
+          window.MXi18n.setLang(e.payload);
+        }
+      });
+    }
+
+    function formatBytes(b) {
+      if (b === 0) return "0 B";
+      const u = ["B","KB","MB","GB","TB"];
+      const i = Math.floor(Math.log(b) / Math.log(1024));
+      return (b / Math.pow(1024, i)).toFixed(i > 2 ? 1 : 0) + " " + u[i];
+    }
+
+    function usageClass(p) { return p < 50 ? "low" : p < 80 ? "medium" : "high"; }
+
+    async function update() {
+      try {
+        const info = await invoke("get_system_info");
+        const { cpu, ram, gpu } = info;
+
+        // CPU
+        const cpuU = document.getElementById("cpu-usage");
+        cpuU.textContent = cpu.global_usage.toFixed(0) + "%";
+        cpuU.className = "section-value-main " + usageClass(cpu.global_usage);
+        document.getElementById("cpu-temp").textContent = cpu.temperature > 0 ? cpu.temperature.toFixed(0) + "\u00B0C" : (window.MXi18n ? window.MXi18n.t("common.nd") : "N/D");
+        document.getElementById("cpu-freq").textContent = cpu.frequency + " MHz";
+        document.getElementById("cpu-bar").style.width = cpu.global_usage + "%";
+
+        // RAM
+        const ramP = document.getElementById("ram-percent");
+        ramP.textContent = ram.usage_percent.toFixed(0) + "%";
+        ramP.className = "section-value-main " + usageClass(ram.usage_percent);
+        document.getElementById("ram-used").textContent = formatBytes(ram.used);
+        document.getElementById("ram-available").textContent = formatBytes(ram.available);
+        document.getElementById("ram-bar").style.width = ram.usage_percent + "%";
+
+        // GPU
+        if (gpu.available) {
+          const gpuU = document.getElementById("gpu-usage");
+          gpuU.textContent = gpu.usage + "%";
+          gpuU.className = "section-value-main " + usageClass(gpu.usage);
+          document.getElementById("gpu-temp").textContent = gpu.temperature + "\u00B0C";
+          document.getElementById("gpu-power").textContent = gpu.power_usage.toFixed(0) + " W";
+          document.getElementById("gpu-bar").style.width = gpu.usage + "%";
+        } else {
+          document.getElementById("gpu-usage").textContent = window.MXi18n ? window.MXi18n.t("common.nd") : "N/D";
+        }
+      } catch (e) {
+        console.error("Widget error:", e);
+      }
+    }
+
+    // Window dragging
+    const win = getCurrentWindow();
+    document.getElementById("drag-region").addEventListener("mousedown", (e) => {
+      if (e.target.closest(".widget-controls")) return;
+      win.startDragging();
+    });
+
+    // Back to main app
+    document.getElementById("btn-back").addEventListener("click", async () => {
+      // Emit event to main window to show itself
+      const { emit } = window.__TAURI__.event;
+      await emit("show-main-window");
+      await win.close();
+    });
+
+    // Close widget only
+    document.getElementById("btn-close").addEventListener("click", async () => {
+      const { emit } = window.__TAURI__.event;
+      await emit("show-main-window");
+      await win.close();
+    });
+
+    update();
+    setInterval(update, 1500);
+  </script>
+</body>
+</html>

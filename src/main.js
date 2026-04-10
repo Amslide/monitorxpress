@@ -4,6 +4,7 @@
 // Copyright (c) 2026 Atomicode® — Monitor Xpress
 
 const { invoke } = window.__TAURI__.core;
+const t = (k, p) => (window.MXi18n ? window.MXi18n.t(k, p) : k);
 
 // ==============================
 // UTILIDADES
@@ -79,7 +80,7 @@ function applyTheme() {
   const sunSvg = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
   const moonSvg = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
   if (ico) ico.innerHTML = isDark ? sunSvg : moonSvg;
-  if (lbl) lbl.textContent = isDark ? "Claro" : "Oscuro";
+  if (lbl) lbl.textContent = isDark ? t("nav.theme.light") : t("nav.theme.dark");
   rebuildAllCharts();
 }
 
@@ -341,7 +342,7 @@ const typeMap = {
 
 function renderSensorGrid(container, sensors, prefix) {
   if (!container) return;
-  if (!sensors.length) { container.innerHTML = '<p class="no-sensors">Sin datos</p>'; return; }
+  if (!sensors.length) { container.innerHTML = `<p class="no-sensors">${t("common.nodata")}</p>`; return; }
   if (container.children.length !== sensors.length) {
     container.innerHTML = "";
     sensors.forEach((_, i) => {
@@ -364,13 +365,13 @@ function renderSensorGrid(container, sensors, prefix) {
 
 function renderFansTo(container, fans, prefix, countEl, hintEl) {
   if (!fans.length) {
-    if (countEl) countEl.textContent = "Sin ventiladores";
-    if (hintEl) { hintEl.style.display = "block"; hintEl.textContent = "Ejecuta como admin para detectar."; }
+    if (countEl) countEl.textContent = t("fans.none");
+    if (hintEl) { hintEl.style.display = "block"; hintEl.textContent = t("fans.adminhint"); }
     return;
   }
   if (hintEl) hintEl.style.display = "none";
   const active = fans.filter(f => f.value > 0).length;
-  if (countEl) countEl.textContent = `${active} activos de ${fans.length}`;
+  if (countEl) countEl.textContent = t("fans.active_of", { a: active, n: fans.length });
   if (container.querySelectorAll(".fan-item").length !== fans.length) {
     container.innerHTML = "";
     fans.forEach((_, i) => {
@@ -386,7 +387,7 @@ function renderFansTo(container, fans, prefix, countEl, hintEl) {
     if (!ne) return;
     let dn = f.name; const di = dn.lastIndexOf(" - "); if (di > 0) dn = dn.substring(di + 3);
     ne.textContent = dn; ne.title = f.name;
-    re.textContent = f.value > 0 ? `${f.value.toFixed(0)} RPM` : "Detenido";
+    re.textContent = f.value > 0 ? `${f.value.toFixed(0)} RPM` : t("fans.stopped");
     re.className = f.value > 0 ? "fan-rpm active" : "fan-rpm stopped";
     be.style.width = `${maxR > 0 ? (f.value/maxR)*100 : 0}%`;
     be.className = f.value > 0 ? "fan-bar spinning" : "fan-bar";
@@ -419,10 +420,13 @@ function renderDisksTo(container, disks, prefix) {
     });
   }
   disks.forEach((dk, i) => {
-    document.getElementById(`${prefix}-dn-${i}`).textContent = dk.name || "Disco local";
+    document.getElementById(`${prefix}-dn-${i}`).textContent = dk.name || t("disks.localdisk");
     document.getElementById(`${prefix}-dm-${i}`).textContent = dk.mount_point;
     document.getElementById(`${prefix}-df-${i}`).textContent = dk.fs_type;
-    document.getElementById(`${prefix}-dd-${i}`).textContent = `${formatBytes(dk.used)} de ${formatBytes(dk.total)} | ${formatBytes(dk.available)} libres | ${dk.usage_percent.toFixed(1)}%`;
+    document.getElementById(`${prefix}-dd-${i}`).textContent = t("disks.detail", {
+      used: formatBytes(dk.used), total: formatBytes(dk.total),
+      free: formatBytes(dk.available), pct: dk.usage_percent.toFixed(1),
+    });
     const fb = document.getElementById(`${prefix}-db-${i}`);
     fb.style.width = `${dk.usage_percent}%`;
     fb.className = dk.usage_percent > 85 ? "disk-bar-fill warn" : "disk-bar-fill";
@@ -453,7 +457,8 @@ function updateUI(info) {
   const cat = categorizeSensors(sensors.sensors || []);
 
   const st = document.getElementById("status");
-  st.textContent = "En linea"; st.classList.remove("error");
+  st.textContent = t("status.online"); st.classList.remove("error");
+  st.removeAttribute("data-i18n");
 
   // --- CPU ---
   document.getElementById("cpu-name").textContent = cpu.name;
@@ -464,7 +469,7 @@ function updateUI(info) {
 
   const cte = document.getElementById("cpu-temp"), ctm = document.getElementById("cpu-temp-mini");
   if (cpu.temperature > 0) { cte.textContent = `${cpu.temperature.toFixed(0)}\u00B0C`; cte.className = `stat-value ${tempClass(cpu.temperature)}`; ctm.textContent = `${cpu.temperature.toFixed(0)}\u00B0C`; }
-  else { cte.textContent = "N/D"; cte.className = "stat-value"; ctm.textContent = ""; }
+  else { cte.textContent = t("common.nd"); cte.className = "stat-value"; ctm.textContent = ""; }
   document.getElementById("cpu-freq").textContent = `${cpu.frequency} MHz`;
   document.getElementById("cpu-cores").textContent = `${cpu.physical_cores}F/${cpu.logical_cores}L`;
 
@@ -516,17 +521,17 @@ function updateUI(info) {
     if (cat.gpu.length > 0) { document.getElementById("gpu-details").style.display = ""; renderSensorGrid(document.getElementById("gpu-sensors-grid"), cat.gpu, "gs"); }
     else document.getElementById("gpu-details").style.display = "none";
   } else {
-    document.getElementById("gpu-name").textContent = "No detectada";
+    document.getElementById("gpu-name").textContent = t("gpu.notdetected");
     document.getElementById("gpu-body").style.opacity = "0.4";
   }
 
   // --- Fans ---
   renderFansTo(document.getElementById("fans-grid"), cat.fans, "f", document.getElementById("fans-count"), document.getElementById("fans-hint"));
   const fam = document.getElementById("fans-active-mini");
-  if (fam) fam.textContent = cat.fans.length > 0 ? `${cat.fans.filter(f=>f.value>0).length} act.` : "0";
+  if (fam) fam.textContent = cat.fans.length > 0 ? t("fans.act_short", { n: cat.fans.filter(f=>f.value>0).length }) : "0";
 
   // --- Discos ---
-  document.getElementById("disk-count").textContent = `${disks.length} unidades`;
+  document.getElementById("disk-count").textContent = t(disks.length === 1 ? "disks.units_one" : "disks.units_other", { n: disks.length });
   renderDisksTo(document.getElementById("disks-list"), disks, "d");
   if (cat.diskTemps.length > 0) { document.getElementById("disk-details").style.display = ""; renderSensorGrid(document.getElementById("disk-sensors-grid"), cat.diskTemps, "ds"); }
   else document.getElementById("disk-details").style.display = "none";
@@ -544,7 +549,7 @@ function updateUI(info) {
   // --- Red ---
   document.getElementById("net-download").textContent = formatSpeed(network.download_speed);
   document.getElementById("net-upload").textContent = formatSpeed(network.upload_speed);
-  document.getElementById("net-subtitle").textContent = `${network.interfaces.length} interfaces`;
+  document.getElementById("net-subtitle").textContent = t(network.interfaces.length === 1 ? "net.iface_count_one" : "net.iface_count_other", { n: network.interfaces.length });
   document.getElementById("net-total-rx").textContent = formatBytes(network.total_received);
   document.getElementById("net-total-tx").textContent = formatBytes(network.total_transmitted);
   document.getElementById("net-dl-mini").textContent = `\u2193${formatSpeed(network.download_speed)}`;
@@ -568,7 +573,7 @@ function updateUI(info) {
     const du = document.getElementById("dcpu-usage"); du.textContent = `${cpu.global_usage.toFixed(1)}%`; du.className = `stat-value ${usageClass(cpu.global_usage)}`;
     const dt = document.getElementById("dcpu-temp");
     if (cpu.temperature > 0) { dt.textContent = `${cpu.temperature.toFixed(0)}\u00B0C`; dt.className = `stat-value ${tempClass(cpu.temperature)}`; }
-    else { dt.textContent = "N/D"; dt.className = "stat-value"; }
+    else { dt.textContent = t("common.nd"); dt.className = "stat-value"; }
     document.getElementById("dcpu-freq").textContent = `${cpu.frequency} MHz`;
     document.getElementById("dcpu-cores").textContent = `${cpu.physical_cores}F / ${cpu.logical_cores}L`;
     if (dcpuChart) { dcpuChart.data.datasets[0].data = [...cpuH]; dcpuChart.update("none"); }
@@ -607,7 +612,7 @@ function updateUI(info) {
   }
 
   if (currentView === "disks") {
-    document.getElementById("ddisk-count").textContent = `${disks.length} unidades`;
+    document.getElementById("ddisk-count").textContent = t(disks.length === 1 ? "disks.units_one" : "disks.units_other", { n: disks.length });
     renderDisksTo(document.getElementById("ddisk-list"), disks, "dd");
     renderSensorGrid(document.getElementById("ddisk-temps-grid"), cat.diskTemps, "ddt");
   }
@@ -626,7 +631,7 @@ function updateUI(info) {
   if (currentView === "net") {
     document.getElementById("dnet-download").textContent = formatSpeed(network.download_speed);
     document.getElementById("dnet-upload").textContent = formatSpeed(network.upload_speed);
-    document.getElementById("dnet-count").textContent = `${network.interfaces.length} interfaces`;
+    document.getElementById("dnet-count").textContent = t(network.interfaces.length === 1 ? "net.iface_count_one" : "net.iface_count_other", { n: network.interfaces.length });
     document.getElementById("dnet-total-rx").textContent = formatBytes(network.total_received);
     document.getElementById("dnet-total-tx").textContent = formatBytes(network.total_transmitted);
     if (dnetChart) {
@@ -646,7 +651,7 @@ async function fetchData() {
     updateUI(info);
   } catch (err) {
     console.error("Error:", err);
-    const s = document.getElementById("status"); s.textContent = "Error"; s.classList.add("error");
+    const s = document.getElementById("status"); s.textContent = t("status.error"); s.classList.add("error");
   }
 }
 
@@ -654,9 +659,11 @@ async function fetchData() {
 // INIT
 // ==============================
 window.addEventListener("DOMContentLoaded", () => {
+  if (window.MXi18n) window.MXi18n.applyI18n();
   applyTheme();
   applyMode();
   applySidebar();
+  initLangSelector();
 
   document.getElementById("theme-toggle").addEventListener("click", toggleTheme);
   document.getElementById("sidebar-toggle").addEventListener("click", toggleSidebar);
@@ -668,7 +675,118 @@ window.addEventListener("DOMContentLoaded", () => {
 
   initWindowControls();
   initCardClicks();
+  initWidgetToggle();
   // Charts are already built by applyTheme() -> rebuildAllCharts()
   fetchData();
   setInterval(fetchData, 1500);
 });
+
+// ==============================
+// LANGUAGE SELECTOR
+// ==============================
+function initLangSelector() {
+  const btn = document.getElementById("lang-toggle");
+  const menu = document.getElementById("lang-menu");
+  const label = document.getElementById("lang-label");
+  if (!btn || !menu || !label || !window.MXi18n) return;
+
+  const LANGS = window.MXi18n.getLangs();
+  const refreshLabel = () => {
+    const cur = window.MXi18n.getLang();
+    label.textContent = (LANGS[cur] && LANGS[cur].short) || cur.toUpperCase();
+    menu.querySelectorAll(".lang-option").forEach((o) => {
+      o.classList.toggle("active", o.dataset.lang === cur);
+    });
+  };
+  refreshLabel();
+
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (e.target.closest(".lang-option")) return;
+    menu.classList.toggle("open");
+  });
+
+  menu.querySelectorAll(".lang-option").forEach((opt) => {
+    opt.addEventListener("click", (e) => {
+      e.stopPropagation();
+      window.MXi18n.setLang(opt.dataset.lang);
+      menu.classList.remove("open");
+    });
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!btn.contains(e.target)) menu.classList.remove("open");
+  });
+
+  window.MXi18n.onLangChange((code) => {
+    refreshLabel();
+    applyTheme(); // refresh theme label text
+    // Re-run data-driven updates so dynamic strings (status, counts) translate
+    fetchData();
+    // Notify widget window (if open) to sync language
+    try { window.__TAURI__.event.emit("mx-lang-changed", code); } catch (e) {}
+  });
+}
+
+// ==============================
+// FLOATING WIDGET
+// ==============================
+function initWidgetToggle() {
+  const btn = document.getElementById("widget-toggle-btn");
+  const modal = document.getElementById("widget-modal");
+  const cancel = document.getElementById("widget-modal-cancel");
+  const accept = document.getElementById("widget-modal-accept");
+  if (!btn || !modal) return;
+
+  const close = () => modal.classList.remove("active");
+  btn.addEventListener("click", () => modal.classList.add("active"));
+  cancel.addEventListener("click", close);
+  modal.addEventListener("click", (e) => { if (e.target === modal) close(); });
+
+  accept.addEventListener("click", async () => {
+    close();
+    try {
+      const { WebviewWindow } = window.__TAURI__.webviewWindow;
+      const { getCurrentWindow } = window.__TAURI__.window;
+      const { listen } = window.__TAURI__.event;
+
+      // Create widget window if it doesn't exist
+      let widget = await WebviewWindow.getByLabel("widget");
+      if (!widget) {
+        widget = new WebviewWindow("widget", {
+          url: "widget.html",
+          title: "MX Widget",
+          width: 230,
+          height: 230,
+          minWidth: 200,
+          minHeight: 200,
+          decorations: false,
+          transparent: true,
+          alwaysOnTop: true,
+          resizable: true,
+          skipTaskbar: false,
+          shadow: false,
+        });
+        widget.once("tauri://error", (e) => console.error("Widget creation error:", e));
+      } else {
+        await widget.show();
+        await widget.setFocus();
+      }
+
+      // Hide main window
+      await getCurrentWindow().hide();
+
+      // Listen for return-to-main event from widget (only register once)
+      if (!window.__mxWidgetListenerSet) {
+        window.__mxWidgetListenerSet = true;
+        await listen("show-main-window", async () => {
+          await getCurrentWindow().show();
+          await getCurrentWindow().setFocus();
+        });
+      }
+    } catch (err) {
+      console.error("Widget error:", err);
+      alert(t("modal.widget.error") + " " + err);
+    }
+  });
+}
